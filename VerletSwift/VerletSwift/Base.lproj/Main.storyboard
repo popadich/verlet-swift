@@ -711,9 +711,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="she-ok-uG8">
-                                <rect key="frame" x="203" y="232" width="75" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Hello World" id="soS-OU-ZZR">
-                                    <font key="font" usesAppearanceFont="YES"/>
+                                <rect key="frame" x="113" y="182" width="254" height="116"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Verlet" id="soS-OU-ZZR">
+                                    <font key="font" size="100" name="HelveticaNeue"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -727,6 +727,9 @@
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system" size="24"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="startButtonClicked:" target="XfG-lQ-9wD" id="scd-Ka-cI2"/>
+                                        </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xrX-N2-OUx">
                                         <rect key="frame" x="160" y="-1" width="160" height="34"/>
@@ -734,6 +737,9 @@
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system" size="24"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="stopButtonClicked:" target="XfG-lQ-9wD" id="Zni-K4-Nvd"/>
+                                        </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UcD-vu-gAQ">
                                         <rect key="frame" x="320" y="-1" width="160" height="34"/>
@@ -741,6 +747,9 @@
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system" size="24"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="resetButtonClicked:" target="XfG-lQ-9wD" id="jxy-Ca-D2x"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -767,6 +776,12 @@
                             <constraint firstItem="she-ok-uG8" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="hAZ-vM-LYS"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="resetButton" destination="UcD-vu-gAQ" id="uWC-We-PQE"/>
+                        <outlet property="startButton" destination="M3C-4z-sPf" id="rEB-Ee-TJa"/>
+                        <outlet property="stopButton" destination="xrX-N2-OUx" id="eCl-M2-b5f"/>
+                        <outlet property="timeLeftField" destination="she-ok-uG8" id="67N-UR-xGy"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
