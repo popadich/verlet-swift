@@ -28,17 +28,30 @@ class ViewController: NSViewController {
         }
     }
 
-    @IBAction func startButtonClicked(_ sender: NSButton) {
+    @IBAction func startButtonClicked(_ sender: Any) {
         timeLeftField.stringValue = "Start"
     }
     
-    @IBAction func stopButtonClicked(_ sender: NSButton) {
+    @IBAction func stopButtonClicked(_ sender: Any) {
         timeLeftField.stringValue = "Stop"
     }
     
-    @IBAction func resetButtonClicked(_ sender: NSButton) {
+    @IBAction func resetButtonClicked(_ sender: Any) {
         timeLeftField.stringValue = "Reset"
     }
     
+    // MARK: - IBActions - menus
+
+    @IBAction func startTimerMenuItemSelected(_ sender: Any) {
+      startButtonClicked(sender)
+    }
+
+    @IBAction func stopTimerMenuItemSelected(_ sender: Any) {
+      stopButtonClicked(sender)
+    }
+
+    @IBAction func resetTimerMenuItemSelected(_ sender: Any) {
+      resetButtonClicked(sender)
+    }
 }
 
