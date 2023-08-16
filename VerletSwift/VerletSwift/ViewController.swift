@@ -36,17 +36,17 @@ class ViewController: NSViewController {
             countDownTimer.duration = TimeInterval(UserDefaults.standard.integer(forKey: "selectedTime"))
             countDownTimer.startTimer()
         }
-        configureButtonsAndMenus()    }
+        configureButtons()    }
     
     @IBAction func stopButtonClicked(_ sender: Any) {
         countDownTimer.stopTimer()
-        configureButtonsAndMenus()
+        configureButtons()
     }
     
     @IBAction func resetButtonClicked(_ sender: Any) {
         countDownTimer.resetTimer()
         updateDisplay(for: TimeInterval(UserDefaults.standard.integer(forKey: "selectedTime")))
-        configureButtonsAndMenus()    }
+        configureButtons()    }
     
     // MARK: - IBActions - menus
 
@@ -74,11 +74,11 @@ extension ViewController: CountDownTimerProtocol {
       
 
       updateDisplay(for: 0)
-      configureButtonsAndMenus()
+      configureButtons()
   }
 }
 
-extension ViewController {
+extension ViewController : NSUserInterfaceValidations {
 
   // MARK: - Display
 
@@ -101,7 +101,7 @@ extension ViewController {
     }
     
     // configure
-    func configureButtonsAndMenus() {
+    func configureButtons() {
         let enableStart: Bool
         let enableStop: Bool
         let enableReset: Bool
@@ -123,10 +123,26 @@ extension ViewController {
         startButton.isEnabled = enableStart
         stopButton.isEnabled = enableStop
         resetButton.isEnabled = enableReset
-        
-//        if let appDel = NSApplication.shared.delegate as? AppDelegate {
-//            appDel.enableMenus(start: enableStart, stop: enableStop, reset: enableReset)
-//        }
     }
     
+    func validateUserInterfaceItem(_ anItem: NSValidatedUserInterfaceItem) -> Bool {
+        let action = anItem.action
+        
+        if action == #selector(startTimerMenuItemSelected) {
+            if !(countDownTimer.isStopped || countDownTimer.isPaused) {
+                return false;
+            }
+        }
+        if action == #selector(stopTimerMenuItemSelected) {
+            if (countDownTimer.isPaused || countDownTimer.isStopped) {
+                return false;
+            }
+        }
+        if action == #selector(resetTimerMenuItemSelected) {
+            if !countDownTimer.isPaused {
+                return false;
+            }
+        }
+        return true
+    }
 }
