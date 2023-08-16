@@ -11,6 +11,7 @@
 		FA6752AE2A8BFD840020F2F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6752AD2A8BFD840020F2F4 /* ViewController.swift */; };
 		FA6752B02A8BFD840020F2F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA6752AF2A8BFD840020F2F4 /* Assets.xcassets */; };
 		FA6752B32A8BFD850020F2F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6752B12A8BFD840020F2F4 /* Main.storyboard */; };
+		FA6752BB2A8C55B80020F2F4 /* PrefsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6752BA2A8C55B80020F2F4 /* PrefsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		FA6752AF2A8BFD840020F2F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA6752B22A8BFD840020F2F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FA6752B42A8BFD850020F2F4 /* VerletSwift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VerletSwift.entitlements; sourceTree = "<group>"; };
+		FA6752BA2A8C55B80020F2F4 /* PrefsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			children = (
 				FA6752AB2A8BFD840020F2F4 /* AppDelegate.swift */,
 				FA6752AD2A8BFD840020F2F4 /* ViewController.swift */,
+				FA6752BA2A8C55B80020F2F4 /* PrefsViewController.swift */,
 				FA6752AF2A8BFD840020F2F4 /* Assets.xcassets */,
 				FA6752B12A8BFD840020F2F4 /* Main.storyboard */,
 				FA6752B42A8BFD850020F2F4 /* VerletSwift.entitlements */,
@@ -132,6 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA6752AE2A8BFD840020F2F4 /* ViewController.swift in Sources */,
+				FA6752BB2A8C55B80020F2F4 /* PrefsViewController.swift in Sources */,
 				FA6752AC2A8BFD840020F2F4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
