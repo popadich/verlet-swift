@@ -13,6 +13,8 @@
 		FA6752B02A8BFD840020F2F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA6752AF2A8BFD840020F2F4 /* Assets.xcassets */; };
 		FA6752B32A8BFD850020F2F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6752B12A8BFD840020F2F4 /* Main.storyboard */; };
 		FA6752BB2A8C55B80020F2F4 /* PrefsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6752BA2A8C55B80020F2F4 /* PrefsViewController.swift */; };
+		FAAF34B02A8E6862005BDE61 /* Particle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF34AF2A8E6862005BDE61 /* Particle.swift */; };
+		FAAF34B22A8E68D5005BDE61 /* VectorCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF34B12A8E68D5005BDE61 /* VectorCalculator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		FA6752B22A8BFD840020F2F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FA6752B42A8BFD850020F2F4 /* VerletSwift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VerletSwift.entitlements; sourceTree = "<group>"; };
 		FA6752BA2A8C55B80020F2F4 /* PrefsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefsViewController.swift; sourceTree = "<group>"; };
+		FAAF34AF2A8E6862005BDE61 /* Particle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Particle.swift; sourceTree = "<group>"; };
+		FAAF34B12A8E68D5005BDE61 /* VectorCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorCalculator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 				FA6752AD2A8BFD840020F2F4 /* ViewController.swift */,
 				FA32D01C2A8D33D60020ECD7 /* CountDownTimer.swift */,
 				FA6752BA2A8C55B80020F2F4 /* PrefsViewController.swift */,
+				FAAF34AF2A8E6862005BDE61 /* Particle.swift */,
+				FAAF34B12A8E68D5005BDE61 /* VectorCalculator.swift */,
 				FA6752AF2A8BFD840020F2F4 /* Assets.xcassets */,
 				FA6752B12A8BFD840020F2F4 /* Main.storyboard */,
 				FA6752B42A8BFD850020F2F4 /* VerletSwift.entitlements */,
@@ -137,7 +143,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAAF34B22A8E68D5005BDE61 /* VectorCalculator.swift in Sources */,
 				FA6752AE2A8BFD840020F2F4 /* ViewController.swift in Sources */,
+				FAAF34B02A8E6862005BDE61 /* Particle.swift in Sources */,
 				FA32D01D2A8D33D60020ECD7 /* CountDownTimer.swift in Sources */,
 				FA6752BB2A8C55B80020F2F4 /* PrefsViewController.swift in Sources */,
 				FA6752AC2A8BFD840020F2F4 /* AppDelegate.swift in Sources */,
