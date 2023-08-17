@@ -282,6 +282,9 @@ DQ
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <binding destination="VRf-If-G3o" name="value" keyPath="values.maximumNumberOfParticles" id="TDZ-7k-H3F"/>
+                                </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kkM-Cr-qMj">
                                 <rect key="frame" x="126" y="45" width="60" height="16"/>
@@ -322,6 +325,7 @@ DQ
                     </connections>
                 </viewController>
                 <customObject id="cIi-JU-LSN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController representsSharedInstance="YES" id="VRf-If-G3o"/>
             </objects>
             <point key="canvasLocation" x="621" y="621"/>
         </scene>

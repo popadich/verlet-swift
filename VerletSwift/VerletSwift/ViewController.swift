@@ -21,12 +21,7 @@ class ViewController: NSViewController {
 
         // Do any additional setup after loading the view.
         countDownTimer.delegate = self
-    }
-
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
-        }
+        setupPrefs()
     }
 
     @IBAction func startButtonClicked(_ sender: Any) {
@@ -46,7 +41,8 @@ class ViewController: NSViewController {
     @IBAction func resetButtonClicked(_ sender: Any) {
         countDownTimer.resetTimer()
         updateDisplay(for: TimeInterval(UserDefaults.standard.integer(forKey: "selectedTime")))
-        configureButtons()    }
+        configureButtons()
+    }
     
     // MARK: - IBActions - menus
 
@@ -144,5 +140,52 @@ extension ViewController : NSUserInterfaceValidations {
             }
         }
         return true
+    }
+}
+
+extension ViewController {
+    
+    // MARK: - Preferences
+    
+    func setupPrefs() {
+        updateDisplay(for: TimeInterval(UserDefaults.standard.integer(forKey: "selectedTime")))
+        
+        let notificationName = Notification.Name(rawValue: "PrefsChanged")
+        NotificationCenter.default.addObserver(forName: notificationName,
+                                               object: nil, queue: nil) {
+            (notification) in
+            self.checkForResetAfterPrefsChange()
+        }
+    }
+    
+    func updateFromPrefs() {
+        self.countDownTimer.duration = TimeInterval(UserDefaults.standard.integer(forKey: "selectedTime"))
+
+        countDownTimer.resetTimer()
+        updateDisplay(for: TimeInterval(UserDefaults.standard.integer(forKey: "selectedTime")))
+        configureButtons()
+    }
+    
+    func checkForResetAfterPrefsChange() {
+        if countDownTimer.isStopped || countDownTimer.isPaused {
+            // 1
+            updateFromPrefs()
+        } else {
+            // 2
+            let alert = NSAlert()
+            alert.messageText = "Reset timer with the new settings?"
+            alert.informativeText = "This will stop your current timer!"
+            alert.alertStyle = .warning
+            
+            // 3
+            alert.addButton(withTitle: "Reset")
+            alert.addButton(withTitle: "Cancel")
+            
+            // 4
+            let response = alert.runModal()
+            if response == NSApplication.ModalResponse.alertFirstButtonReturn {
+                self.updateFromPrefs()
+            }
+        }
     }
 }
