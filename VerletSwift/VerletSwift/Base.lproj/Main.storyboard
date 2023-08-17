@@ -337,6 +337,12 @@ DQ
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="Rzd-Ee-B8e" customClass="AnimationView" customModule="VerletSwift" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="40" width="480" height="440"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Rzd-Ee-B8e" secondAttribute="height" multiplier="12:11" id="HKr-fq-YvA"/>
+                                </constraints>
+                            </customView>
                             <stackView distribution="fillEqually" orientation="horizontal" alignment="top" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GVp-Vw-ef2">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="32"/>
                                 <subviews>
@@ -387,23 +393,28 @@ DQ
                                 </customSpacing>
                             </stackView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="she-ok-uG8">
-                                <rect key="frame" x="139" y="182" width="203" height="116"/>
+                                <rect key="frame" x="189" y="404" width="102" height="56"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="6:00" id="soS-OU-ZZR">
-                                    <font key="font" size="100" name="HelveticaNeue"/>
+                                    <font key="font" size="48" name="HelveticaNeue"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Rzd-Ee-B8e" secondAttribute="trailing" id="7eF-K2-hQY"/>
+                            <constraint firstItem="she-ok-uG8" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" symbolic="YES" id="94v-ZE-081"/>
+                            <constraint firstItem="Rzd-Ee-B8e" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="AS5-Sg-l7b"/>
+                            <constraint firstItem="GVp-Vw-ef2" firstAttribute="top" secondItem="Rzd-Ee-B8e" secondAttribute="bottom" constant="8" symbolic="YES" id="Iv8-Pz-p6l"/>
                             <constraint firstAttribute="trailing" secondItem="GVp-Vw-ef2" secondAttribute="trailing" id="R3q-Xl-OTK"/>
                             <constraint firstAttribute="bottom" secondItem="GVp-Vw-ef2" secondAttribute="bottom" id="XQD-cQ-gSY"/>
                             <constraint firstItem="GVp-Vw-ef2" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="Xb9-t2-874"/>
-                            <constraint firstItem="she-ok-uG8" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="YFq-Kc-YfV"/>
-                            <constraint firstItem="she-ok-uG8" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="hAZ-vM-LYS"/>
+                            <constraint firstItem="Rzd-Ee-B8e" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="e5P-tZ-2t5"/>
+                            <constraint firstItem="she-ok-uG8" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="tjt-7W-que"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="animationView" destination="Rzd-Ee-B8e" id="cEo-fi-Jpv"/>
                         <outlet property="resetButton" destination="UcD-vu-gAQ" id="uWC-We-PQE"/>
                         <outlet property="startButton" destination="M3C-4z-sPf" id="rEB-Ee-TJa"/>
                         <outlet property="stopButton" destination="xrX-N2-OUx" id="eCl-M2-b5f"/>

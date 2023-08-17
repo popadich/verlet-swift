@@ -13,6 +13,7 @@ class ViewController: NSViewController {
     @IBOutlet weak var startButton: NSButton!
     @IBOutlet weak var stopButton: NSButton!
     @IBOutlet weak var resetButton: NSButton!
+    @IBOutlet weak var animationView: AnimationView!
     
     var countDownTimer = CountDownTimer()
     
