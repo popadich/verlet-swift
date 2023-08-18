@@ -16,6 +16,7 @@
 		FAAF34B02A8E6862005BDE61 /* Particle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF34AF2A8E6862005BDE61 /* Particle.swift */; };
 		FAAF34B22A8E68D5005BDE61 /* VectorCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF34B12A8E68D5005BDE61 /* VectorCalculator.swift */; };
 		FAAF34B62A8E6A0D005BDE61 /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF34B52A8E6A0D005BDE61 /* AnimationView.swift */; };
+		FAAF34B82A8EDFE8005BDE61 /* Solver.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF34B72A8EDFE8005BDE61 /* Solver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		FAAF34AF2A8E6862005BDE61 /* Particle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Particle.swift; sourceTree = "<group>"; };
 		FAAF34B12A8E68D5005BDE61 /* VectorCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorCalculator.swift; sourceTree = "<group>"; };
 		FAAF34B52A8E6A0D005BDE61 /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
+		FAAF34B72A8EDFE8005BDE61 /* Solver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Solver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				FA32D01C2A8D33D60020ECD7 /* CountDownTimer.swift */,
 				FA6752BA2A8C55B80020F2F4 /* PrefsViewController.swift */,
 				FAAF34B52A8E6A0D005BDE61 /* AnimationView.swift */,
+				FAAF34B72A8EDFE8005BDE61 /* Solver.swift */,
 				FAAF34AF2A8E6862005BDE61 /* Particle.swift */,
 				FAAF34B12A8E68D5005BDE61 /* VectorCalculator.swift */,
 				FA6752AF2A8BFD840020F2F4 /* Assets.xcassets */,
@@ -148,6 +151,7 @@
 			files = (
 				FAAF34B22A8E68D5005BDE61 /* VectorCalculator.swift in Sources */,
 				FAAF34B62A8E6A0D005BDE61 /* AnimationView.swift in Sources */,
+				FAAF34B82A8EDFE8005BDE61 /* Solver.swift in Sources */,
 				FA6752AE2A8BFD840020F2F4 /* ViewController.swift in Sources */,
 				FAAF34B02A8E6862005BDE61 /* Particle.swift in Sources */,
 				FA32D01D2A8D33D60020ECD7 /* CountDownTimer.swift in Sources */,

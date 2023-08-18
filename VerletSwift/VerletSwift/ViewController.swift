@@ -17,31 +17,56 @@ class ViewController: NSViewController {
     
     var countDownTimer = CountDownTimer()
     
+    var solver: Solver = Solver(withParticleCount: 0)
+    private var object_spawn_delay : CGFloat    = 0.125
+    private var object_min_radius : CGFloat     = 4.0
+    private var object_max_radius : CGFloat     = 20.0
+    private var max_angle : CGFloat             = 1.0
+    var object_spawn_position : CGVector = CGVector.zero
+    var object_spawn_speed : CGFloat = -1200.0
+    var max_objects_count: Int = 0
+    var frame_rate : Int = 30
+    var eventTimer : Timer?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         countDownTimer.delegate = self
         setupPrefs()
+        
+        // Set up Verlet Solver
+        solver.delegate = self
+        solver.setSubStepsCount(8)
+        solver.setSimulationUpdateRate(frame_rate)
+        
+        setConstraints()
+
     }
 
     @IBAction func startButtonClicked(_ sender: Any) {
         if countDownTimer.isPaused {
             countDownTimer.resumeTimer()
+            startParticleEvents()
         } else {
             countDownTimer.duration = TimeInterval(UserDefaults.standard.integer(forKey: "selectedTime"))
             countDownTimer.startTimer()
+            startParticleEvents()
         }
-        configureButtons()    }
+        configureButtons()
+    }
     
     @IBAction func stopButtonClicked(_ sender: Any) {
         countDownTimer.stopTimer()
+        solver.stopAnimation()
+        stopParticleEvents()
         configureButtons()
     }
     
     @IBAction func resetButtonClicked(_ sender: Any) {
         countDownTimer.resetTimer()
         updateDisplay(for: TimeInterval(UserDefaults.standard.integer(forKey: "selectedTime")))
+        resetParticleEvents()
         configureButtons()
     }
     
@@ -68,8 +93,7 @@ extension ViewController: CountDownTimerProtocol {
   }
 
   func timerHasFinished(_ timer: CountDownTimer) {
-      
-
+      stopParticleEvents()
       updateDisplay(for: 0)
       configureButtons()
   }
@@ -161,32 +185,96 @@ extension ViewController {
     
     func updateFromPrefs() {
         self.countDownTimer.duration = TimeInterval(UserDefaults.standard.integer(forKey: "selectedTime"))
-
+        max_objects_count = UserDefaults.standard.integer(forKey: "maximumNumberOfParticles")
         countDownTimer.resetTimer()
         updateDisplay(for: TimeInterval(UserDefaults.standard.integer(forKey: "selectedTime")))
+        resetParticleEvents()
         configureButtons()
     }
     
     func checkForResetAfterPrefsChange() {
         if countDownTimer.isStopped || countDownTimer.isPaused {
-            // 1
             updateFromPrefs()
         } else {
-            // 2
             let alert = NSAlert()
             alert.messageText = "Reset timer with the new settings?"
             alert.informativeText = "This will stop your current timer!"
             alert.alertStyle = .warning
             
-            // 3
             alert.addButton(withTitle: "Reset")
             alert.addButton(withTitle: "Cancel")
             
-            // 4
             let response = alert.runModal()
             if response == NSApplication.ModalResponse.alertFirstButtonReturn {
                 self.updateFromPrefs()
             }
         }
+    }
+}
+
+extension ViewController: SolverProtocol {
+    //MARK: - Solver Protocol
+    
+    func updateAnimationView(_ solver: Solver) {
+        animationView.needsDisplay = true
+    }
+    
+    func animationHasFinished(_ solver: Solver) {
+        print("Animation has finished")
+    }
+
+}
+
+
+extension ViewController {
+    //MARK: - Verlet Events Engine
+    
+    func particleEvent() {
+        if solver.particlesArray.count < max_objects_count {
+
+            let particle = solver.addParticle(position: object_spawn_position, withRadius: CGFloat.random(in: object_min_radius...object_max_radius))
+            
+            let t = solver.getTime()
+            let angle : CGFloat  = max_angle * sin(t) + CGFloat.pi * 0.5
+            let velocity = CGVector(dx: object_spawn_speed * cos(angle), dy: object_spawn_speed * sin(angle))
+
+            solver.setObjectVelocity(object: particle, velocity: velocity)
+            
+            // have to pass the array every time because it's call by value
+            animationView.particlesArray = solver.particlesArray
+        }
+    }
+    
+    func setConstraints() {
+        let constraintHeight = CGRectGetHeight(animationView.bounds)
+        let constraintWidth = CGRectGetWidth(animationView.bounds)
+        let widthOffset = (constraintWidth - constraintHeight)/2
+        let constraintRadius = constraintHeight / 2.0
+        let centerPoint = CGPointMake(constraintHeight - constraintRadius + widthOffset, constraintHeight - constraintRadius)
+        
+        object_spawn_position = CGVectorMake(centerPoint.x, centerPoint.y + constraintRadius - 40.0)
+        
+        animationView.setConstraint(position: centerPoint, withRadius: constraintRadius)
+        solver.setConstraint(position: centerPoint, withRadius: constraintRadius)
+    }
+    
+    func startParticleEvents() {
+        setConstraints()
+        max_objects_count = UserDefaults.standard.integer(forKey: "maximumNumberOfParticles")
+        solver.startAnimation()
+        eventTimer = Timer.scheduledTimer(withTimeInterval: object_spawn_delay, repeats: true) { timer in
+            self.particleEvent()
+        }
+    }
+    
+    func stopParticleEvents() {
+        solver.stopAnimation()
+        eventTimer?.invalidate()
+        eventTimer = nil
+    }
+    
+    func resetParticleEvents() {
+        solver.resetAnimation()
+        animationView.particlesArray = solver.particlesArray
     }
 }
