@@ -44,6 +44,11 @@ class ViewController: NSViewController {
 
     }
 
+    override func viewDidLayout() {
+        setConstraints()
+        solver.particlesArray.removeAll()
+    }
+    
     @IBAction func startButtonClicked(_ sender: Any) {
         if countDownTimer.isPaused {
             countDownTimer.resumeTimer()
